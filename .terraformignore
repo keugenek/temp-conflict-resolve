@@ -1,0 +1,14 @@
+node_modules/
+public/
+scripts/
+src/
+.github/
+.browserlistrc
+.eslintrc
+.gitignore
+vue.config.js
+babel.config.js
+README.md
+LICENSE.md
+package.json
+package-lock.json
