@@ -89,7 +89,7 @@ resource "aws_s3_object" "dist-img" {
   for_each = fileset("${path.module}/../dist/img", "*.png")
 
   bucket       = aws_s3_bucket.site-bucket.id
-  key          = each.value
+  key          = "img/${each.value}"
   source       = "${path.module}/../dist/img/${each.value}"
   etag         = filemd5("${path.module}/../dist/img/${each.value}")
   content_type = "image/png"
