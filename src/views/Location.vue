@@ -14,7 +14,8 @@
             style="width: 100%; height: 100%; border:0"
             loading="lazy"
             allowfullscreen
-            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJfXBPdBYXsocRP5bVyBYm8Dw&key=AIzaSyBb74A4xeZCuY1QpPIwKXFV1bTJw_6asYg">
+            :src="'https://www.google.com/maps/embed/v1/place?q=' +
+                  'place_id:ChIJfXBPdBYXsocRP5bVyBYm8Dw&key=AIzaSyBb74A4xeZCuY1QpPIwKXFV1bTJw_6asYg'">
           </iframe>
         </div>
       </div>
