@@ -1,5 +1,5 @@
 {
-  "name": "astro.garden",
+  "name": "KandJ.wedding",
   "version": "0.1.0",
   "private": true,
   "author": {
@@ -10,37 +10,31 @@
   "license": "GPL-2.0-only",
   "repository": {
     "type": "git",
-    "url": "git://github.com/USA-RedDragon/astro.garden.git"
+    "url": "git://github.com/USA-RedDragon/KandJ.wedding.git"
   },
   "scripts": {
     "start": "npm run start:dev",
     "start:dev": "vue-cli-service serve",
     "build": "npm run build:pre && vue-cli-service build",
-    "build:pre": "node scripts/imagemin.mjs && node scripts/sitemap.mjs",
+    "build:pre": "node scripts/sitemap.mjs",
     "lint": "npm run lint:fix -- --no-fix",
     "lint:fix": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-plugin-router": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
+    "eslint": "^7.5.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "glob": "^7.1.7",
-    "imagemin": "^8.0.0",
-    "imagemin-optipng": "^8.0.0",
+    "eslint-plugin-vue": "^9.3.0",
     "path-parser": "^6.1.0",
-    "pretty-bytes": "^5.6.0",
-    "sharp": "^0.28.3",
     "sitemap": "^7.0.0",
     "vue-template-compiler": "^2.6.11"
   }

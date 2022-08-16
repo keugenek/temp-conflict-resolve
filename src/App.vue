@@ -39,34 +39,24 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #c3c3c3;
+  color: #bebebe;
 }
 
-#nav {
-  padding: 30px;
+.alert {
+  background-color: #b41f0e;
+  color: #ddd;
+  display: inline-block;
+  padding: 1em;
+  margin-bottom: 0px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #c3c3c3;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+h1, h2, h3, h4, h5, h6 {
+  display: inline-block;
+  margin-bottom: 0px;
 }
 
 body {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-body.no-webp {
-  background-image: url("assets/background.jpg");
-}
-
-body.webp {
-  background-image: url("assets/background.webp");
+  background-color: #000;
 }
 
 p {
@@ -74,6 +64,6 @@ p {
 }
 
 a {
-  color: #42b983;
+  color: #8daab8;
 }
 </style>

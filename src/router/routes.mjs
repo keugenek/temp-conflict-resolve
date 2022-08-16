@@ -1,38 +1,56 @@
 export default [
   {
     path: '/',
-    name: 'Gallery',
+    name: 'Main',
     sitemap: {
       changefreq: 'daily',
       priority: 1,
     },
-    component: () => import(/* webpackChunkName: "Gallery" */ '../views/Gallery.vue'),
+    component: () => import(/* webpackChunkName: "Main" */ '../views/Main.vue'),
+  },
+  {
+    path: '/rsvp',
+    name: 'RSVP',
+    sitemap: {
+      changefreq: 'daily',
+      priority: 1,
+    },
+    component: () => import(/* webpackChunkName: "RSVP" */ '../views/RSVP.vue'),
+  },
+  {
+    path: '/location',
+    name: 'Location',
+    sitemap: {
+      changefreq: 'daily',
+      priority: 1,
+    },
+    component: () => import(/* webpackChunkName: "Location" */ '../views/Location.vue'),
+  },
+  {
+    path: '/dresscode',
+    name: 'Dresscode',
+    sitemap: {
+      changefreq: 'daily',
+      priority: 1,
+    },
+    component: () => import(/* webpackChunkName: "Dresscode" */ '../views/Dresscode.vue'),
   },
   {
     path: '/about',
     name: 'About',
     sitemap: {
-      changefreq: 'monthly',
-      priority: 0.75,
+      changefreq: 'daily',
+      priority: 1,
     },
-    component: () => import(/* webpackChunkName: "About" */ '../views/About.vue'),
+    component: () => import(/* webpackChunkName: "RSVP" */ '../views/About.vue'),
   },
   {
-    path: '/gallery/:gallery/:image',
-    name: 'Gallery Image Details',
+    path: '/coc',
+    name: 'CodeOfConduct',
     sitemap: {
-      changefreq: 'weekly',
-      priority: 0.5,
+      changefreq: 'daily',
+      priority: 1,
     },
-    component: () => import(/* webpackChunkName: "GalleryDetails" */ '../views/GalleryDetails.vue'),
-  },
-  {
-    path: '/equipment',
-    name: 'Equipment',
-    sitemap: {
-      changefreq: 'monthly',
-      priority: 0.75,
-    },
-    component: () => import(/* webpackChunkName: "Equipment" */ '../views/Equipment.vue'),
+    component: () => import(/* webpackChunkName: "CodeOfConduct" */ '../views/CodeOfConduct.vue'),
   },
 ];
