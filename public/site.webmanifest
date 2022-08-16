@@ -1,6 +1,6 @@
 {
-    "name": "Astro Garden",
-    "short_name": "Astro Garden",
+    "name": "Katelyn and Jacob McSwain Wedding",
+    "short_name": "Katelyn Maes &hearts; Jacob McSwain",
     "icons": [
         {
             "src": "/android-chrome-36x36.png?v=309a9",
@@ -40,6 +40,6 @@
     ],
     "theme_color": "#101010",
     "background_color": "#101010",
-    "start_url": "https://astro.garden",
+    "start_url": "https://KandJ.wedding",
     "display": "standalone"
 }
