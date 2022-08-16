@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Header />
+    <SiteHeader />
     <router-view />
   </div>
 </template>
 
 <script>
-import Header from "./components/Header";
+import SiteHeader from "./components/SiteHeader";
 
 export default {
   components: {
-    Header,
+    SiteHeader,
   },
   methods: {
     supportsWebp: async function() {

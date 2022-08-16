@@ -16,7 +16,8 @@
       "no-unused-vars": [ "error", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" } ],
       "valid-jsdoc": "off",
       "linebreak-style": "off",
-      "quotes": "off"
+      "quotes": "off",
+      "vue/multi-word-component-names": "off"
   },
   "parserOptions": {
       "parser": "babel-eslint"
