@@ -244,7 +244,7 @@ html {
   color: #ddd;
   display: inline-block;
   padding: 1em;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 h1,
@@ -254,8 +254,8 @@ h4,
 h5,
 h6 {
   display: inline-block;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
   font-weight: 900;
 }
 
