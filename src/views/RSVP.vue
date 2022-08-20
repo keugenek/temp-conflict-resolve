@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h1>RSVP</h1>
-    <section class="content">
-    </section>
+    <div class="card">
+      <div class="header">
+        <h2>RSVP</h2>
+      </div>
+      <div class="content">
+        <h2>RSVPs not yet available</h2>
+      </div>
+    </div>
   </div>
 </template>
 

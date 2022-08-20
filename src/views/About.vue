@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h1>About Us</h1>
-    <section class="content">
-    </section>
+    <div class="card">
+      <div class="header">
+        <h2>About Us</h2>
+      </div>
+      <div class="content">
+        <h2>Coming Soon</h2>
+      </div>
+    </div>
   </div>
 </template>
 

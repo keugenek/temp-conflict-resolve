@@ -1,13 +1,11 @@
 <template>
   <div class="header">
-    <h1>Katelyn Maes &hearts; Jacob McSwain</h1><br/>
-    <h3 class="alert">This site is under construction. Some things may be broken.</h3>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/rsvp">RSVP</router-link> |
-      <router-link to="/location">Location</router-link> |
-      <router-link to="/dresscode">Dress Code</router-link> |
-      <router-link to="/coc">Code of Conduct</router-link> |
+      <h2><router-link to="/" class="title">Katelyn Maes &hearts; Jacob McSwain</router-link></h2> |
+      <router-link to="/rsvp">RSVP</router-link>
+      <router-link to="/location">Location</router-link>
+      <router-link to="/dresscode">Dress Code</router-link>
+      <router-link to="/coc">Code of Conduct</router-link>
       <router-link to="/about">About Us</router-link>
     </div>
   </div>
@@ -19,18 +17,39 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.title {
+  font-weight: 900;
+  font-size: xx-large;
+}
+
+.header {
+  margin-top: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  font-family: Mada, sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  z-index: 1;
+}
+
 #nav {
   padding: 1em;
+  background-color: rgba(28,37,65, 0.85);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 #nav a {
   font-weight: bold;
-  color: #c3c3c3;
+  color: #477485;
   text-decoration: none;
+  padding: 1em;
 }
 
 #nav a.router-link-exact-active {
-  color: #8ca5b9;
+  color: #00bbbd;
 }
 </style>

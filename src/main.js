@@ -9,3 +9,10 @@ new Vue({
   render: (h) => h(App),
   propsData: { canvasElement: document.getElementById('constellations') },
 }).$mount('#app');
+
+Vue.filter('two_digits', (value) => {
+  if (value.toString().length <= 1) {
+    return "0" + value.toString();
+  }
+  return value.toString();
+});

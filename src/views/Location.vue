@@ -1,25 +1,30 @@
 <template>
   <div>
-    <section class="content">
-      <h3>We will be getting married on the 11th of November, 2022 at Crew Workspace in Downtown Oklahoma City.</h3>
-      <div class="row">
-        <div class="column">
-          <img
-            style="width: 100%"
-            :src="require('@/assets/parking.png')"
-            alt="Park South of Crew Workspace. Avoid the lot directly East of the entrance." />
-        </div>
-        <div class="column">
-          <iframe
-            style="width: 100%; height: 100%; border:0"
-            loading="lazy"
-            allowfullscreen
-            :src="'https://www.google.com/maps/embed/v1/place?q=' +
-                  'place_id:ChIJfXBPdBYXsocRP5bVyBYm8Dw&key=AIzaSyBb74A4xeZCuY1QpPIwKXFV1bTJw_6asYg'">
-          </iframe>
+    <div class="card">
+      <div class="header">
+        <h2>Location</h2>
+      </div>
+      <div class="content">
+        <h2>We will be getting married on the 11th of November, 2022 at Crew Workspace in Downtown Oklahoma City.</h2>
+        <div class="row">
+          <div class="column">
+            <img
+              style="width: 100%"
+              :src="require('@/assets/parking.png')"
+              alt="Park South of Crew Workspace. Avoid the lot directly East of the entrance." />
+          </div>
+          <div class="column">
+            <iframe
+              style="width: 100%; height: 100%; border:0"
+              loading="lazy"
+              allowfullscreen
+              :src="'https://www.google.com/maps/embed/v1/place?q=' +
+                    'place_id:ChIJfXBPdBYXsocRP5bVyBYm8Dw&key=AIzaSyBb74A4xeZCuY1QpPIwKXFV1bTJw_6asYg'">
+            </iframe>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 

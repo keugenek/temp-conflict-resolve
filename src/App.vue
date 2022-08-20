@@ -2,15 +2,18 @@
   <div id="app">
     <SiteHeader />
     <router-view />
+    <SiteFooter />
   </div>
 </template>
 
 <script>
 import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
 
 export default {
   components: {
     SiteHeader,
+    SiteFooter,
   },
   data: function() {
     return {
@@ -238,8 +241,11 @@ export default {
   font-family: 'Libre Franklin', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #bebebe;
+  padding: 3em;
+  padding-top: 5em;
+  padding-bottom: 1em;
+  margin-bottom: 0;
 }
 
 html {
@@ -262,7 +268,21 @@ h4,
 h5,
 h6 {
   display: inline-block;
+  margin-top: 0px;
   margin-bottom: 0px;
+  font-weight: 900;
+}
+
+h1 {
+  font-size: 64pt;
+}
+
+h2 {
+  font-size: 48pt;
+}
+
+h2 {
+  font-size: 36pt;
 }
 
 h1,
@@ -300,5 +320,31 @@ p {
 
 a {
   color: #8daab8;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  background-color: rgba(58,80,107,0.4);
+  padding-bottom: 2em;
+  margin: 5em;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.card .header {
+  background-color: rgba(40,56,73, 0.4);
+  padding: 2em;
+  margin: 0;
+  margin-bottom: 2em;
+  border-radius: 5px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.card .content {
+  padding: 2em;
+  text-align: center;
 }
 </style>

@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h1>Dress Code</h1>
-    <section class="content">
-    </section>
+    <div class="card">
+      <div class="header">
+        <h2>Dress Code</h2>
+      </div>
+      <div class="content">
+        <h2>Coming Soon</h2>
+      </div>
+    </div>
   </div>
 </template>
 
