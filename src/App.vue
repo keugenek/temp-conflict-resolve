@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <canvas ref="constellations"></canvas>
     <SiteHeader />
     <router-view />
   </div>
@@ -184,11 +183,11 @@ export default {
       }
     },
     animate: function() {
-      const canvas = this.$refs.constellations;
+      const canvas = this["$parent"]["$options"].propsData.canvasElement;
       const context = canvas.getContext("2d");
 
-      canvas.height = canvas.parentNode.parentNode.parentNode.clientHeight;
-      canvas.width = canvas.parentNode.parentNode.parentNode.clientWidth;
+      canvas.height = canvas.clientHeight;
+      canvas.width = canvas.clientWidth;
 
       context.fillStyle = this.bgColor;
       context.fillRect(0, 0, canvas.width, canvas.height);
@@ -243,6 +242,11 @@ export default {
   color: #bebebe;
 }
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+
 .alert {
   background-color: #b41f0e;
   color: #ddd;
@@ -263,15 +267,19 @@ h6 {
 
 body {
   background-color: #000;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
-canvas {
+#constellations {
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
+  bottom: 0;
+  overflow: hidden;
   z-index: -1;
+  width: 100%;
+  height: 100%;
 }
 
 p {
