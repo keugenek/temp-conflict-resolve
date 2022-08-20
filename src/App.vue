@@ -30,14 +30,14 @@ export default {
           outline: "#b3c6ff",
         },
       ],
-      maxParticles: 64,
-      numGridX: 8,
-      numGridY: 8,
+      maxParticles: 144,
+      numGridX: 12,
+      numGridY: 12,
       particleAlphaFadeIn: 15,
       particleAlphaFadeOut: 12,
       particleDelayMax: 15,
-      particleTimerMax: 50,
-      particleTimerMin: 4,
+      particleTimerMax: 100,
+      particleTimerMin: 8,
       drawMs: 100, // Rate at which to draw animated background
       debug: false,
     };
@@ -55,21 +55,17 @@ export default {
       );
     },
     drawStar: function(context, point, alpha=1) {
-      // Fade out alpha compensation
-      if (point.timer <= this.particleAlphaFadeOut) {
+      // Fade in alpha compensation
+      if (point.delay < this.particleAlphaFadeIn && point.delay > 0) {
+        alpha = 1/point.delay;
+      } else if (point.timer <= this.particleAlphaFadeOut) {
+        // Fade out alpha compensation
         alpha = point.timer*(1/Math.abs(this.particleAlphaFadeOut-point.timer));
         if (alpha > 1) {
           alpha = 1;
         }
       }
 
-      // Fade in alpha compensation
-      if (point.delay < this.particleAlphaFadeIn && point.delay > 0) {
-        let alpha = 1/point.delay;
-        if (alpha > 1) {
-          alpha = 1;
-        }
-      }
 
       // Circle
       context.globalAlpha = alpha;
