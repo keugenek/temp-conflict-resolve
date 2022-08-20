@@ -46,17 +46,6 @@ export default {
     };
   },
   methods: {
-    supportsWebp: async function() {
-      if (!self.createImageBitmap) return false;
-
-      const webpData =
-        "data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=";
-      const blob = await fetch(webpData).then((r) => r.blob());
-      return createImageBitmap(blob).then(
-        () => true,
-        () => false,
-      );
-    },
     drawStar: function(context, point, alpha=1) {
       // Fade in alpha compensation
       if (point.delay < this.particleAlphaFadeIn && point.delay > 0) {
@@ -224,9 +213,6 @@ export default {
     },
   },
   mounted() {
-    this.supportsWebp().then((supportsWebp) => {
-      document.body.classList.add(supportsWebp ? "webp" : "no-webp");
-    });
     this.animate();
   },
 };
