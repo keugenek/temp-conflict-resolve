@@ -234,8 +234,12 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Mada');
+@import url('https://fonts.googleapis.com/css?family=Hind');
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -263,6 +267,18 @@ h5,
 h6 {
   display: inline-block;
   margin-bottom: 0px;
+}
+
+h1,
+h2 {
+  font-family: Mada, sans-serif;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: Hind, sans-serif;
 }
 
 body {
