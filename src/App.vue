@@ -16,9 +16,31 @@ export default {
   data: function() {
     return {
       particles: [],
+      bgColor: "#060a17",
+      starColors: [
+        {
+          center: "#cfc54a",
+          outline: "#cfaf4a",
+        },
+        {
+          center: "#86232a",
+          outline: "#721e24",
+        },
+        {
+          center: "#9fb7ff",
+          outline: "#b3c6ff",
+        },
+      ],
       maxParticles: 64,
       numGridX: 8,
       numGridY: 8,
+      particleAlphaFadeIn: 15,
+      particleAlphaFadeOut: 12,
+      particleDelayMax: 15,
+      particleTimerMax: 50,
+      particleTimerMin: 4,
+      drawMs: 100, // Rate at which to draw animated background
+      debug: false,
     };
   },
   methods: {
@@ -33,37 +55,54 @@ export default {
         () => false,
       );
     },
-    drawStar: function(context, x, y) {
+    drawStar: function(context, point, alpha=1) {
+      // Fade out alpha compensation
+      if (point.timer <= this.particleAlphaFadeOut) {
+        alpha = point.timer*(1/Math.abs(this.particleAlphaFadeOut-point.timer));
+        if (alpha > 1) {
+          alpha = 1;
+        }
+      }
+
+      // Fade in alpha compensation
+      if (point.delay < this.particleAlphaFadeIn && point.delay > 0) {
+        let alpha = 1/point.delay;
+        if (alpha > 1) {
+          alpha = 1;
+        }
+      }
+
       // Circle
+      context.globalAlpha = alpha;
       context.beginPath();
       context.lineWidth = 1;
-      context.strokeStyle = "#cfaf4a";
-      context.fillStyle = "#cfc54a";
-      context.arc(x, y, 2, 0, 2 * Math.PI);
+      context.strokeStyle = point.colors.outline;
+      context.fillStyle = point.colors.center;
+      context.arc(point.x, point.y, 2, 0, 2 * Math.PI);
       context.fill();
       context.stroke();
 
       // Starburst
       context.beginPath();
       context.lineWidth = 1;
-      context.moveTo(x, y);
+      context.moveTo(point.x, point.y);
       const maxStarburstLen = 3;
       context.lineTo(
-        x + Math.floor(Math.random() * maxStarburstLen + 1),
-        y + Math.floor(Math.random() * maxStarburstLen + 1),
+        point.x + Math.floor(Math.random() * maxStarburstLen + 1),
+        point.y + Math.floor(Math.random() * maxStarburstLen + 1),
       );
       context.lineTo(
-        x - Math.floor(Math.random() * maxStarburstLen + 1),
-        y - Math.floor(Math.random() * maxStarburstLen + 1),
+        point.x - Math.floor(Math.random() * maxStarburstLen + 1),
+        point.y - Math.floor(Math.random() * maxStarburstLen + 1),
       );
-      context.moveTo(x, y);
+      context.moveTo(point.x, point.y);
       context.lineTo(
-        x + Math.floor(Math.random() * maxStarburstLen + 1),
-        y - Math.floor(Math.random() * maxStarburstLen + 1),
+        point.x + Math.floor(Math.random() * maxStarburstLen + 1),
+        point.y - Math.floor(Math.random() * maxStarburstLen + 1),
       );
       context.lineTo(
-        x - Math.floor(Math.random() * maxStarburstLen + 1),
-        y + Math.floor(Math.random() * maxStarburstLen + 1),
+        point.x - Math.floor(Math.random() * maxStarburstLen + 1),
+        point.y + Math.floor(Math.random() * maxStarburstLen + 1),
       );
       context.fill();
       context.stroke();
@@ -78,12 +117,16 @@ export default {
     },
     fillParticles: function(canvas) {
       while (this.particles.length < this.maxParticles) {
+        const clrIdx = Math.floor(Math.random() * this.starColors.length);
         const point = {
           x: Math.floor(Math.floor(Math.random() * canvas.width)),
           y: Math.floor(Math.floor(Math.random() * canvas.height)),
-          timer: Math.floor(Math.random() * (88 - 29) + 29 + 1), // ~3secs per star
-          delay: Math.floor(Math.random() * 88), // 0-3s delay to visibility
-          square: { x: 0, y: 0 }, // filled in a moment
+          timer: Math.floor(
+            Math.random() * (this.particleTimerMax - this.particleTimerMin) + this.particleTimerMin + 1,
+          ),
+          delay: Math.floor(Math.random() * this.particleDelayMax + 1),
+          square: { x: 0, y: 0 }, // filled next,
+          colors: this.starColors[clrIdx],
         };
         point.square = this.getSquare(point, canvas);
         if (this.checkPoint(point, canvas)) {
@@ -120,6 +163,26 @@ export default {
       }
       return { x: 0, y: 0 };
     },
+    drawGridlines: function(canvas, context) {
+      const widthOfSquare = Math.floor(canvas.width / this.numGridX);
+      const heightOfSquare = Math.floor(canvas.height / this.numGridY);
+
+      for (let x = 0; x < this.numGridX; x++) {
+        context.strokeStyle = "white";
+        context.moveTo(widthOfSquare * x, 0);
+        context.lineTo(widthOfSquare * x, canvas.height);
+        context.stroke();
+        context.fill();
+      }
+
+      for (let y = 0; y < this.numGridY; y++) {
+        context.strokeStyle = "white";
+        context.moveTo(0, heightOfSquare * y);
+        context.lineTo(canvas.width, heightOfSquare * y);
+        context.stroke();
+        context.fill();
+      }
+    },
     animate: function() {
       const canvas = this.$refs.constellations;
       const context = canvas.getContext("2d");
@@ -127,27 +190,12 @@ export default {
       canvas.height = canvas.parentNode.parentNode.parentNode.clientHeight;
       canvas.width = canvas.parentNode.parentNode.parentNode.clientWidth;
 
-      context.fillStyle = "#060a17";
+      context.fillStyle = this.bgColor;
       context.fillRect(0, 0, canvas.width, canvas.height);
 
-      // const widthOfSquare = Math.floor(canvas.width / this.numGridX);
-      // const heightOfSquare = Math.floor(canvas.height / this.numGridY);
-
-      // for (let x = 0; x < this.numGridX; x++) {
-      //   context.strokeStyle = "white";
-      //   context.moveTo(widthOfSquare * x, 0);
-      //   context.lineTo(widthOfSquare * x, canvas.height);
-      //   context.stroke();
-      //   context.fill();
-      // }
-
-      // for (let y = 0; y < this.numGridY; y++) {
-      //   context.strokeStyle = "white";
-      //   context.moveTo(0, heightOfSquare * y);
-      //   context.lineTo(canvas.width, heightOfSquare * y);
-      //   context.stroke();
-      //   context.fill();
-      // }
+      if (this.debug) {
+        this.drawGridlines(canvas, context);
+      }
 
       if (this.particles.length > this.maxParticles) {
         this.particles = this.particles.slice(0, this.maxParticles);
@@ -158,11 +206,14 @@ export default {
       const newParticles = [];
       for (let i = 0; i < this.particles.length; i++) {
         this.particles[i].delay = this.particles[i].delay - 1;
-        if (this.particles[i].delay <= 0) {
+        if (this.particles[i].delay < this.particleAlphaFadeIn && this.particles[i].delay > 0) {
+          this.drawStar(context, this.particles[i]);
+          newParticles.push(this.particles[i]);
+        } else if (this.particles[i].delay <= 0) {
           this.particles[i].delay = 0; // Prevent unbound negatives
           this.particles[i].timer = this.particles[i].timer - 1;
           if (this.particles[i].timer > 0) {
-            this.drawStar(context, this.particles[i].x, this.particles[i].y);
+            this.drawStar(context, this.particles[i]);
             newParticles.push(this.particles[i]);
           }
         }
@@ -171,7 +222,7 @@ export default {
 
       setTimeout(() => {
         window.requestAnimationFrame(this.animate);
-      }, 34); // Roughly 60"f"ps
+      }, this.drawMs);
     },
   },
   mounted() {
