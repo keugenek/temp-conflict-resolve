@@ -35,7 +35,7 @@
 export default {
   components: {},
   created() {},
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {

@@ -19,7 +19,7 @@ export default {
     Countdown,
   },
   created() {},
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {

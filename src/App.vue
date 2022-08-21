@@ -17,7 +17,7 @@ export default {
     SiteHeader,
     SiteFooter,
   },
-  data: function () {
+  data: function() {
     return {
       particles: [],
       bgColor: "#060a17",
@@ -48,7 +48,7 @@ export default {
     };
   },
   methods: {
-    drawStar: function (context, point, alpha = 1) {
+    drawStar: function(context, point, alpha = 1) {
       // Fade in alpha compensation
       if (point.delay < this.particleAlphaFadeIn && point.delay > 0) {
         alpha = 1 / point.delay;
@@ -78,25 +78,25 @@ export default {
       const maxStarburstLen = 3;
       context.lineTo(
         point.x + Math.floor(Math.random() * maxStarburstLen + 1),
-        point.y + Math.floor(Math.random() * maxStarburstLen + 1)
+        point.y + Math.floor(Math.random() * maxStarburstLen + 1),
       );
       context.lineTo(
         point.x - Math.floor(Math.random() * maxStarburstLen + 1),
-        point.y - Math.floor(Math.random() * maxStarburstLen + 1)
+        point.y - Math.floor(Math.random() * maxStarburstLen + 1),
       );
       context.moveTo(point.x, point.y);
       context.lineTo(
         point.x + Math.floor(Math.random() * maxStarburstLen + 1),
-        point.y - Math.floor(Math.random() * maxStarburstLen + 1)
+        point.y - Math.floor(Math.random() * maxStarburstLen + 1),
       );
       context.lineTo(
         point.x - Math.floor(Math.random() * maxStarburstLen + 1),
-        point.y + Math.floor(Math.random() * maxStarburstLen + 1)
+        point.y + Math.floor(Math.random() * maxStarburstLen + 1),
       );
       context.fill();
       context.stroke();
     },
-    checkPoint: function (point) {
+    checkPoint: function(point) {
       // Check the point to ensure it doesn't occupy
       // the same grid square bounds as another point
       if (this.squareOccupied(point.square)) {
@@ -104,7 +104,7 @@ export default {
       }
       return true;
     },
-    fillParticles: function (canvas) {
+    fillParticles: function(canvas) {
       while (this.particles.length < this.maxParticles) {
         const clrIdx = Math.floor(Math.random() * this.starColors.length);
         const point = {
@@ -113,7 +113,7 @@ export default {
           timer: Math.floor(
             Math.random() * (this.particleTimerMax - this.particleTimerMin) +
               this.particleTimerMin +
-              1
+              1,
           ),
           delay: Math.floor(Math.random() * this.particleDelayMax + 1),
           square: { x: 0, y: 0 }, // filled next,
@@ -125,14 +125,14 @@ export default {
         }
       }
     },
-    squareOccupied: function (square) {
+    squareOccupied: function(square) {
       for (const particle of this.particles) {
         if (particle.square.x == square.x && particle.square.y == square.y) {
           return true;
         }
       }
     },
-    getSquare: function (point, canvas) {
+    getSquare: function(point, canvas) {
       // Divide into grid
       const widthOfSquare = Math.floor(canvas.width / this.numGridX);
       const heightOfSquare = Math.floor(canvas.height / this.numGridY);
@@ -154,7 +154,7 @@ export default {
       }
       return { x: 0, y: 0 };
     },
-    drawGridlines: function (canvas, context) {
+    drawGridlines: function(canvas, context) {
       const widthOfSquare = Math.floor(canvas.width / this.numGridX);
       const heightOfSquare = Math.floor(canvas.height / this.numGridY);
 
@@ -174,7 +174,7 @@ export default {
         context.fill();
       }
     },
-    animate: function () {
+    animate: function() {
       const canvas = this["$parent"]["$options"].propsData.canvasElement;
       const context = canvas.getContext("2d");
 
