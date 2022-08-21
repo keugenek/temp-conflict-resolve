@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <div class="card">
-      <div class="header">
-        <h2>Countdown</h2>
-      </div>
-      <div class="content">
-        <Countdown :date="Math.trunc(Date.parse('November 11, 2022 15:30:00 UTC') / 1000)">
-          <h2>Congratulations!</h2>
-        </Countdown>
-      </div>
-    </div>
-  </div>
+  <mu-card raised style="width: 100%">
+    <mu-card-title title="Countdown"></mu-card-title>
+    <mu-card-text>
+      <Countdown
+        :date="Math.trunc(Date.parse('November 11, 2022 15:30:00 UTC') / 1000)"
+      >
+        <h2>Congratulations!</h2>
+      </Countdown>
+    </mu-card-text>
+  </mu-card>
 </template>
 
 <script>
@@ -21,7 +19,7 @@ export default {
     Countdown,
   },
   created() {},
-  data: function() {
+  data: function () {
     return {};
   },
   methods: {

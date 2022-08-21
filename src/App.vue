@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <SiteHeader />
-    <router-view />
+    <mu-container class="mu-container">
+      <router-view />
+    </mu-container>
     <SiteFooter />
   </div>
 </template>
@@ -15,7 +17,7 @@ export default {
     SiteHeader,
     SiteFooter,
   },
-  data: function() {
+  data: function () {
     return {
       particles: [],
       bgColor: "#060a17",
@@ -46,18 +48,18 @@ export default {
     };
   },
   methods: {
-    drawStar: function(context, point, alpha=1) {
+    drawStar: function (context, point, alpha = 1) {
       // Fade in alpha compensation
       if (point.delay < this.particleAlphaFadeIn && point.delay > 0) {
-        alpha = 1/point.delay;
+        alpha = 1 / point.delay;
       } else if (point.timer <= this.particleAlphaFadeOut) {
         // Fade out alpha compensation
-        alpha = point.timer*(1/Math.abs(this.particleAlphaFadeOut-point.timer));
+        alpha =
+          point.timer * (1 / Math.abs(this.particleAlphaFadeOut - point.timer));
         if (alpha > 1) {
           alpha = 1;
         }
       }
-
 
       // Circle
       context.globalAlpha = alpha;
@@ -76,25 +78,25 @@ export default {
       const maxStarburstLen = 3;
       context.lineTo(
         point.x + Math.floor(Math.random() * maxStarburstLen + 1),
-        point.y + Math.floor(Math.random() * maxStarburstLen + 1),
+        point.y + Math.floor(Math.random() * maxStarburstLen + 1)
       );
       context.lineTo(
         point.x - Math.floor(Math.random() * maxStarburstLen + 1),
-        point.y - Math.floor(Math.random() * maxStarburstLen + 1),
+        point.y - Math.floor(Math.random() * maxStarburstLen + 1)
       );
       context.moveTo(point.x, point.y);
       context.lineTo(
         point.x + Math.floor(Math.random() * maxStarburstLen + 1),
-        point.y - Math.floor(Math.random() * maxStarburstLen + 1),
+        point.y - Math.floor(Math.random() * maxStarburstLen + 1)
       );
       context.lineTo(
         point.x - Math.floor(Math.random() * maxStarburstLen + 1),
-        point.y + Math.floor(Math.random() * maxStarburstLen + 1),
+        point.y + Math.floor(Math.random() * maxStarburstLen + 1)
       );
       context.fill();
       context.stroke();
     },
-    checkPoint: function(point) {
+    checkPoint: function (point) {
       // Check the point to ensure it doesn't occupy
       // the same grid square bounds as another point
       if (this.squareOccupied(point.square)) {
@@ -102,14 +104,16 @@ export default {
       }
       return true;
     },
-    fillParticles: function(canvas) {
+    fillParticles: function (canvas) {
       while (this.particles.length < this.maxParticles) {
         const clrIdx = Math.floor(Math.random() * this.starColors.length);
         const point = {
           x: Math.floor(Math.floor(Math.random() * canvas.width)),
           y: Math.floor(Math.floor(Math.random() * canvas.height)),
           timer: Math.floor(
-            Math.random() * (this.particleTimerMax - this.particleTimerMin) + this.particleTimerMin + 1,
+            Math.random() * (this.particleTimerMax - this.particleTimerMin) +
+              this.particleTimerMin +
+              1
           ),
           delay: Math.floor(Math.random() * this.particleDelayMax + 1),
           square: { x: 0, y: 0 }, // filled next,
@@ -121,14 +125,14 @@ export default {
         }
       }
     },
-    squareOccupied: function(square) {
+    squareOccupied: function (square) {
       for (const particle of this.particles) {
         if (particle.square.x == square.x && particle.square.y == square.y) {
           return true;
         }
       }
     },
-    getSquare: function(point, canvas) {
+    getSquare: function (point, canvas) {
       // Divide into grid
       const widthOfSquare = Math.floor(canvas.width / this.numGridX);
       const heightOfSquare = Math.floor(canvas.height / this.numGridY);
@@ -150,7 +154,7 @@ export default {
       }
       return { x: 0, y: 0 };
     },
-    drawGridlines: function(canvas, context) {
+    drawGridlines: function (canvas, context) {
       const widthOfSquare = Math.floor(canvas.width / this.numGridX);
       const heightOfSquare = Math.floor(canvas.height / this.numGridY);
 
@@ -170,7 +174,7 @@ export default {
         context.fill();
       }
     },
-    animate: function() {
+    animate: function () {
       const canvas = this["$parent"]["$options"].propsData.canvasElement;
       const context = canvas.getContext("2d");
 
@@ -193,7 +197,10 @@ export default {
       const newParticles = [];
       for (let i = 0; i < this.particles.length; i++) {
         this.particles[i].delay = this.particles[i].delay - 1;
-        if (this.particles[i].delay < this.particleAlphaFadeIn && this.particles[i].delay > 0) {
+        if (
+          this.particles[i].delay < this.particleAlphaFadeIn &&
+          this.particles[i].delay > 0
+        ) {
           this.drawStar(context, this.particles[i]);
           newParticles.push(this.particles[i]);
         } else if (this.particles[i].delay <= 0) {
@@ -219,12 +226,12 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Mada');
-@import url('https://fonts.googleapis.com/css?family=Hind');
-@import url('https://fonts.googleapis.com/css?family=Libre+Franklin');
+@import url("https://fonts.googleapis.com/css?family=Mada");
+@import url("https://fonts.googleapis.com/css?family=Hind");
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin");
 
 #app {
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #bebebe;
@@ -308,29 +315,26 @@ a {
   color: #8daab8;
 }
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
+.mu-card {
   border-radius: 5px;
-  background-color: rgba(58,80,107,0.4);
-  padding-bottom: 2em;
-  margin: 5em;
+  background-color: rgba(58, 80, 107, 0.4) !important;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
 
-.card .header {
-  background-color: rgba(40,56,73, 0.4);
-  padding: 2em;
-  margin: 0;
-  margin-bottom: 2em;
+.mu-card-title-container {
+  background-color: rgba(40, 56, 73, 0.4) !important;
   border-radius: 5px;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
 
-.card .content {
-  padding: 2em;
+.mu-card-text {
   text-align: center;
+}
+
+.mu-container {
+  margin-top: 5em;
+  width: 90vw;
 }
 </style>

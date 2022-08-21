@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <div class="card">
-      <div class="header">
-        <h2>Code of Conduct</h2>
-      </div>
-      <div class="content">
-        <h2>Don't be a dick</h2>
-      </div>
-    </div>
-  </div>
+  <mu-card raised style="width: 100%">
+    <mu-card-title title="Code of Conduct"></mu-card-title>
+    <mu-card-text>
+      <h2>Don't be a dick</h2>
+    </mu-card-text>
+  </mu-card>
 </template>
 
 <script>
 export default {
   components: {},
   created() {},
-  data: function() {
+  data: function () {
     return {};
   },
   methods: {

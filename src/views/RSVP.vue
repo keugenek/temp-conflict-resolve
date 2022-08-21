@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <div class="card">
-      <div class="header">
-        <h2>RSVP</h2>
-      </div>
-      <div class="content">
-        <h2>RSVPs not yet available</h2>
-      </div>
-    </div>
-  </div>
+  <mu-card raised style="width: 100%">
+    <mu-card-title title="RSVP"></mu-card-title>
+    <mu-card-text>
+      <h2>RSVPs not yet available!</h2>
+    </mu-card-text>
+  </mu-card>
 </template>
 
 <script>
 export default {
   components: {},
   created() {},
-  data: function() {
+  data: function () {
     return {};
   },
   methods: {

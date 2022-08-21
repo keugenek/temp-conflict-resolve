@@ -26,7 +26,7 @@
 export default {
   mounted() {
     window.setInterval(() => {
-      this.now = Math.trunc((new Date()).getTime() / 1000);
+      this.now = Math.trunc(new Date().getTime() / 1000);
     }, 1000);
   },
   props: {
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      now: Math.trunc((new Date()).getTime() / 1000),
+      now: Math.trunc(new Date().getTime() / 1000),
     };
   },
   computed: {
@@ -65,27 +65,27 @@ export default {
 }
 
 .block {
-    width: 25%
+  width: 25%;
 }
 
 .container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .text {
-    color: #00bbbd;
-    font-size: 40px;
-    font-weight: 400;
-    margin: 10px;
-    text-align: center;
+  color: #00bbbd;
+  font-size: 200%;
+  font-weight: 400;
+  margin: 10px;
+  text-align: center;
 }
 
 .digit {
-    color: #ecf0f1;
-    font-size: 150px;
-    font-weight: 100;
-    margin: 10px;
-    text-align: center;
+  color: #ecf0f1;
+  font-size: 400%;
+  font-weight: 100;
+  margin: 10px;
+  text-align: center;
 }
 </style>
