@@ -22,26 +22,26 @@
           prop="rsvpCode"
           label="RSVP Code from Envelope"
           :rules="rsvpRules"
-          :help-text="
-            'Check the inside flap, it will be a white label. ' +
-            'If you can\'t find this, contact the bride or groom.'
-          "
+          help-text="Check for a white label on the inside flap"
         >
           <mu-text-field
             prop="rsvpCode"
             v-model="form.rsvpCode"
           ></mu-text-field>
         </mu-form-item>
-        <mu-form-item prop="reminders" label="Reminders?">
+        <mu-form-item
+          prop="reminders"
+          label="Reminder one month and one week before the wedding?"
+        >
           <mu-checkbox
             v-model="form.reminders"
             value="email"
-            label="Email reminder 1 month and 1 week before the event."
+            label="Email"
           ></mu-checkbox>
           <mu-checkbox
             v-model="form.reminders"
             value="text"
-            label="Text reminder 1 month and 1 week before the event."
+            label="Text"
           ></mu-checkbox>
         </mu-form-item>
         <mu-form-item
