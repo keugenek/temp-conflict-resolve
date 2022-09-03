@@ -13,7 +13,6 @@
             label-position="right"
             label-width="250"
           >
-            <!-- Text box -->
             <mu-form-item prop="first" label="First Name" :rules="firstNameRules">
               <mu-text-field v-model="form.first" prop="first"></mu-text-field>
             </mu-form-item>

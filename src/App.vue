@@ -329,17 +329,26 @@ a {
   -webkit-backdrop-filter: blur(3px);
 }
 
-.mu-card-text {
+.mu-card-text > h1,
+.mu-card-text > h2,
+.mu-card-text > h3,
+.mu-card-text > h4,
+.mu-card-text > h5,
+.mu-card-text > h6 {
+  display: block;
   text-align: center;
 }
 
 .mu-container {
-  margin-top: 5em;
-  width: 90vw;
+  margin-top: 6vh;
 }
 
 .mu-card {
   width: 100%;
+}
+
+li {
+  font-size: 1.3em;
 }
 
 @media (min-width: 1800px) {

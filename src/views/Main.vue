@@ -13,7 +13,6 @@
       </mu-card>
     </mu-flex>
     <br/>
-    <br/>
     <mu-flex justify-content="center">
       <mu-card>
         <mu-card-title title="The Rings"></mu-card-title>
