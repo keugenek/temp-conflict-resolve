@@ -297,11 +297,15 @@ h1 {
 }
 
 h2 {
-  font-size: 48pt;
+  font-size: 36pt;
 }
 
-h2 {
-  font-size: 36pt;
+h3 {
+  font-size: 28pt;
+}
+
+h4 {
+  font-size: 18pt;
 }
 
 h1,
@@ -331,10 +335,6 @@ body {
   z-index: -1;
   width: 100%;
   height: 100%;
-}
-
-p {
-  font-size: 1.3em;
 }
 
 a {
@@ -373,13 +373,59 @@ a {
   width: 100%;
 }
 
-li {
+p, li {
   font-size: 1.3em;
 }
 
 @media (min-width: 1800px) {
   .container {
     max-width: 1710px;
+  }
+}
+
+@media (max-width: 675px) {
+  p, li {
+    font-size: 1em;
+  }
+
+  h1 {
+  font-size: 48pt;
+  }
+
+  h2 {
+    font-size: 27pt;
+  }
+
+  h3 {
+    font-size: 21pt;
+  }
+
+  h4 {
+    font-size: 13.5pt;
+  }
+  .mu-container {
+    margin-top: 3vh;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 38pt;
+  }
+
+  h2 {
+    font-size: 21pt;
+  }
+
+  h3 {
+    font-size: 16.6pt;
+  }
+
+  h4 {
+    font-size: 10.6pt;
+  }
+  .mu-container {
+    margin-top: .5vh;
   }
 }
 </style>

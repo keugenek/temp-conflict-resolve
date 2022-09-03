@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <h3>Copyright &copy; 2022 - Jacob McSwain</h3>
+    <h4>Copyright &copy; 2022 - Jacob McSwain</h4>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   margin-bottom: 0;
 }
 
-.footer h3 {
+.footer h4 {
   background-color: rgba(28,37,65, 0);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);

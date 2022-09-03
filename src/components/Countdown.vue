@@ -77,7 +77,7 @@ export default {
   color: #00bbbd;
   font-size: 200%;
   font-weight: 400;
-  margin: 10px;
+  margin: .1em;
   text-align: center;
 }
 
@@ -104,6 +104,18 @@ export default {
   }
   .digit {
     font-size: 200%;
+  }
+}
+
+@media (max-width: 320px) {
+  .text {
+    font-size: 70%;
+  }
+  .digit {
+    font-size: 110%;
+  }
+  .block {
+    width: 25%;
   }
 }
 </style>
