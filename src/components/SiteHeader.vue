@@ -6,18 +6,53 @@
       >
     </h2>
     <span class="separator">|</span>
-    <router-link class="nav" to="/rsvp">RSVP</router-link>
-    <router-link class="nav" to="/location">Location</router-link>
-    <router-link class="nav" to="/dresscode">Dress Code</router-link>
-    <router-link class="nav" to="/coc">Code of Conduct</router-link>
-    <router-link class="nav" to="/about">About Us</router-link>
-    <span class="hamburger"><mu-icon size="36" value="menu"></mu-icon></span>
+    <mu-menu cover v-if="dropdownMenu">
+      <mu-icon class="hamburger" size="36" value="menu"></mu-icon>
+      <mu-list slot="content">
+        <mu-list-item :ripple="false" class="nav" to="/rsvp">
+          <mu-list-item-title>RSVP</mu-list-item-title>
+        </mu-list-item>
+        <mu-list-item :ripple="false" class="nav" to="/location">
+          <mu-list-item-title>Location</mu-list-item-title>
+        </mu-list-item>
+        <mu-list-item :ripple="false" class="nav" to="/dresscode">
+          <mu-list-item-title>Dress Code</mu-list-item-title>
+        </mu-list-item>
+        <mu-list-item :ripple="false" class="nav" to="/coc">
+          <mu-list-item-title>Code of Conduct</mu-list-item-title>
+        </mu-list-item>
+        <mu-list-item :ripple="false" class="nav" to="/about">
+          <mu-list-item-title>About Us</mu-list-item-title>
+        </mu-list-item>
+      </mu-list>
+    </mu-menu>
+    <v-else>
+      <router-link class="nav" to="/rsvp">RSVP</router-link>
+      <router-link class="nav" to="/location">Location</router-link>
+      <router-link class="nav" to="/dresscode">Dress Code</router-link>
+      <router-link class="nav" to="/coc">Code of Conduct</router-link>
+      <router-link class="nav" to="/about">About Us</router-link>
+    </v-else>
   </div>
 </template>
 
 <script>
 export default {
   name: "SiteHeader",
+  data: function() {
+    return {
+      dropdownMenu: false,
+    };
+  },
+  mounted() {
+    this.updateDropdown();
+    window.addEventListener('resize', this.updateDropdown);
+  },
+  methods: {
+    updateDropdown: function() {
+      this.dropdownMenu = window.matchMedia('(max-width: 1233px)').matches;
+    },
+  },
 };
 </script>
 
@@ -27,10 +62,13 @@ export default {
   height: 100%;
 }
 
-.hamburger {
-  display: none;
+.mu-menu {
   margin-left: auto;
   margin-top: .5em;
+}
+
+.hamburger {
+  display: none;
 }
 
 .header {
@@ -62,10 +100,6 @@ export default {
   font-weight: bold;
   color: #477485;
   text-decoration: none;
-}
-
-.header a.router-link-exact-active {
-  color: #00bbbd;
 }
 
 @media (max-width: 1233px) {

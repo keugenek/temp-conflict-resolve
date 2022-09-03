@@ -377,6 +377,23 @@ p, li {
   font-size: 1.3em;
 }
 
+.mu-popover {
+  margin-top: 2.5em;
+  border-radius: 5px;
+  background-color: rgba(28, 37, 65, 0.85) !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.router-link-exact-active,
+.router-link-exact-active .mu-item {
+  color: #00bbbd !important;
+}
+
+.mu-item {
+  color: #bebebe !important;
+}
+
 @media (min-width: 1800px) {
   .container {
     max-width: 1710px;

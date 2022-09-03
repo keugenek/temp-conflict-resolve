@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 import 'muse-ui/lib/styles/base.less';
-import { Alert, Button, Card, Checkbox, Form, Icon, TextField } from 'muse-ui';
+import { Alert, Button, Card, Checkbox, Form, Icon, List, Menu, TextField } from 'muse-ui';
 import Container from 'muse-ui/src/Grid';
 import 'muse-ui/lib/styles/theme.less';
 import theme from 'muse-ui/lib/theme';
@@ -19,6 +19,8 @@ Vue.use(Container);
 Vue.use(Checkbox);
 Vue.use(Form);
 Vue.use(Icon);
+Vue.use(List);
+Vue.use(Menu);
 Vue.use(TextField);
 
 new Vue({
