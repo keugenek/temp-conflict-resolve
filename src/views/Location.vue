@@ -9,7 +9,7 @@
             Workspace in Downtown Oklahoma City.
           </p>
           <iframe
-                style="width: 100%; height: 100%; border: 0"
+                style="width: 100%; height: 80vh; border: 0"
                 loading="lazy"
                 allowfullscreen
                 :src="
