@@ -341,4 +341,10 @@ a {
 .mu-card {
   width: 100%;
 }
+
+@media (min-width: 1800px) {
+  .container {
+    max-width: 1710px;
+  }
+}
 </style>
