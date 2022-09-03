@@ -1,14 +1,30 @@
 <template>
-  <mu-card raised style="width: 100%">
-    <mu-card-title title="Countdown"></mu-card-title>
-    <mu-card-text>
-      <Countdown
-        :date="Math.trunc(Date.parse('November 11, 2022 15:30:00 UTC') / 1000)"
-      >
-        <h2>Congratulations!</h2>
-      </Countdown>
-    </mu-card-text>
-  </mu-card>
+  <div style="width: 100%">
+    <mu-flex justify-content="center">
+      <mu-card style="width: 75%">
+        <mu-card-title title="Countdown"></mu-card-title>
+        <mu-card-text>
+          <Countdown
+            :date="Math.trunc(Date.parse('November 11, 2022 15:30:00 UTC') / 1000)"
+          >
+            <h2>Congratulations!</h2>
+          </Countdown>
+        </mu-card-text>
+      </mu-card>
+    </mu-flex>
+    <br/>
+    <br/>
+    <mu-flex justify-content="center">
+      <mu-card style="width: 75%">
+        <mu-card-title title="The Rings"></mu-card-title>
+        <mu-card-text @mouseover="ringLit = canHover ? true:ringLit" @mouseleave="ringLit = canHover ? false:ringLit">
+            <img @click="ringLit = !canHover ? !ringLit:ringLit" :src="ringLit ? require('@/assets/ring_overlay_night.png'):require('@/assets/ring_day.png')"
+              width="100%"/>
+          <h3><span v-if="canHover">Hover</span><span v-else>Click</span> to see them glow</h3>
+        </mu-card-text>
+      </mu-card>
+    </mu-flex>
+  </div>
 </template>
 
 <script>
@@ -19,11 +35,16 @@ export default {
     Countdown,
   },
   created() {},
+  mounted() {
+    this.canHover = window.matchMedia('(hover: hover)').matches;
+  },
   data: function() {
-    return {};
+    return {
+      ringLit: false,
+      canHover: false,
+    };
   },
   methods: {
-    async getData() {},
   },
 };
 </script>
