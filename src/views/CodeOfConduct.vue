@@ -19,6 +19,9 @@
             <li>You can record or take pictures, but please refrain from posting any on social media
               until after the wedding ceremony.</li>
             <li>Do not harass or otherwise impede the photographer.</li>
+            <li>Please do not bring children. Exceptions can be made by contacting the bride or groom.</li>
+            <li>Contact the bride or groom for plus ones. The venue is small and we have a limited amount
+              of seating and food.</li>
           </ul>
           <p>Violations of these rules will result in being asked to leave.
             Failure to leave is considered trespass.</p>
