@@ -21,7 +21,13 @@ export default {
     return {
       particles: [],
       bgColor: "#060a17",
+      // 4:3:2
+      // red:blue:yellow
       starColors: [
+        {
+          center: "#cfc54a",
+          outline: "#cfaf4a",
+        },
         {
           center: "#cfc54a",
           outline: "#cfaf4a",
@@ -29,6 +35,26 @@ export default {
         {
           center: "#86232a",
           outline: "#721e24",
+        },
+        {
+          center: "#86232a",
+          outline: "#721e24",
+        },
+        {
+          center: "#86232a",
+          outline: "#721e24",
+        },
+        {
+          center: "#86232a",
+          outline: "#721e24",
+        },
+        {
+          center: "#9fb7ff",
+          outline: "#b3c6ff",
+        },
+        {
+          center: "#9fb7ff",
+          outline: "#b3c6ff",
         },
         {
           center: "#9fb7ff",
@@ -75,7 +101,7 @@ export default {
       context.beginPath();
       context.lineWidth = 1;
       context.moveTo(point.x, point.y);
-      const maxStarburstLen = 3;
+      const maxStarburstLen = 2;
       context.lineTo(
         point.x + Math.floor(Math.random() * maxStarburstLen + 1),
         point.y + Math.floor(Math.random() * maxStarburstLen + 1),
