@@ -88,4 +88,22 @@ export default {
   margin: 10px;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .text {
+    font-size: 175%;
+  }
+  .digit {
+    font-size: 350%;
+  }
+}
+
+@media (max-width: 576px) {
+  .text {
+    font-size: 100%;
+  }
+  .digit {
+    font-size: 200%;
+  }
+}
 </style>
