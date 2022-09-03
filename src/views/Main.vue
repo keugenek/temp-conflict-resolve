@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%">
     <mu-flex justify-content="center">
-      <mu-card style="width: 75%">
+      <mu-card>
         <mu-card-title title="Countdown"></mu-card-title>
         <mu-card-text>
           <Countdown
@@ -15,11 +15,13 @@
     <br/>
     <br/>
     <mu-flex justify-content="center">
-      <mu-card style="width: 75%">
+      <mu-card>
         <mu-card-title title="The Rings"></mu-card-title>
         <mu-card-text @mouseover="ringLit = canHover ? true:ringLit" @mouseleave="ringLit = canHover ? false:ringLit">
-            <img @click="ringLit = !canHover ? !ringLit:ringLit" :src="ringLit ? require('@/assets/ring_overlay_night.png'):require('@/assets/ring_day.png')"
-              width="100%"/>
+            <img
+              @click="ringLit = !canHover ? !ringLit:ringLit"
+              :src="ringLit ? require('@/assets/ring_overlay_night.png'):require('@/assets/ring_day.png')"
+              width="100%" />
           <h3><span v-if="canHover">Hover</span><span v-else>Click</span> to see them glow</h3>
         </mu-card-text>
       </mu-card>

@@ -32,7 +32,7 @@ export default {
   left: 0;
   width: 100%;
   min-height: 10vh;
-  max-height: 15vh;
+  max-height: 10vh;
   position: fixed;
   font-family: Mada, sans-serif;
   font-weight: bold;

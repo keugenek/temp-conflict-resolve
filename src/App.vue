@@ -337,4 +337,8 @@ a {
   margin-top: 5em;
   width: 90vw;
 }
+
+.mu-card {
+  width: 100%;
+}
 </style>
