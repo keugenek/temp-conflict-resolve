@@ -4,6 +4,8 @@
       <mu-card>
         <mu-card-title title="Countdown"></mu-card-title>
         <mu-card-text>
+          <h4>We will be getting married on the 11th of November, 2022</h4>
+          <br />
           <Countdown
             :date="Math.trunc(Date.parse('November 11, 2022 15:30:00 UTC') / 1000)"
           >
@@ -21,7 +23,7 @@
               @click="ringLit = !canHover ? !ringLit:ringLit"
               :src="ringLit ? require('@/assets/ring_overlay_night.png'):require('@/assets/ring_day.png')"
               width="100%" />
-          <h3><span v-if="canHover">Hover</span><span v-else>Click</span> to see them glow</h3>
+          <h3><span v-if="canHover">Hover</span><span v-else>Tap</span> to see them glow</h3>
         </mu-card-text>
       </mu-card>
     </mu-flex>

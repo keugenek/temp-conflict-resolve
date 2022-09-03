@@ -4,20 +4,11 @@
       <mu-card>
         <mu-card-title title="Location"></mu-card-title>
         <mu-card-text>
-          <h2>
+          <p>
             We will be getting married on the 11th of November, 2022 at Crew
             Workspace in Downtown Oklahoma City.
-          </h2>
-          <div class="row">
-            <div class="column">
-              <img
-                style="width: 100%"
-                :src="require('@/assets/parking.png')"
-                alt="Park South of Crew Workspace. Avoid the lot directly East of the entrance."
-              />
-            </div>
-            <div class="column">
-              <iframe
+          </p>
+          <iframe
                 style="width: 100%; height: 100%; border: 0"
                 loading="lazy"
                 allowfullscreen
@@ -27,8 +18,20 @@
                 "
               >
               </iframe>
-            </div>
-          </div>
+        </mu-card-text>
+      </mu-card>
+    </mu-flex>
+    <br />
+    <mu-flex justify-content="center">
+      <mu-card>
+        <mu-card-title title="Parking"></mu-card-title>
+        <mu-card-text>
+          <img
+                style="width: 100%"
+                :src="require('@/assets/parking.png')"
+                alt="Park South of Crew Workspace. Avoid the lot directly East of the entrance."
+              />
+          <p>Park South of Crew Workspace. Avoid the lot directly East of the entrance.</p>
         </mu-card-text>
       </mu-card>
     </mu-flex>
@@ -49,12 +52,4 @@ export default {
 </script>
 
 <style scoped>
-.row {
-  display: flex;
-  padding: 3em;
-}
-
-.column {
-  flex: 50%;
-}
 </style>
