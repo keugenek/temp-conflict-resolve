@@ -38,7 +38,8 @@ export default {
   },
   created() {},
   mounted() {
-    this.canHover = window.matchMedia('(hover: hover)').matches;
+    // hover: hover matches on Android phones with Chrome, thus we can't use it for our purposes
+    this.canHover = window.matchMedia('(pointer: fine)').matches;
   },
   data: function() {
     return {
