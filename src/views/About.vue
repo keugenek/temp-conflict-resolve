@@ -6,9 +6,6 @@
         <mu-card-text>
           <h2>Katelyn</h2>
           <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;
             Jacob and I have been together for 8 going on 9 years.
             We first met at Braum's about 10 years ago. At the time,
             I didn't know he liked me. He was a very shy boy at the
