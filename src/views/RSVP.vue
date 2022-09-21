@@ -3,10 +3,16 @@
     <mu-flex justify-content="center">
       <mu-card>
         <mu-card-title title="RSVP"> </mu-card-title>
-        <mu-alert color="error"
-          >This form is not yet functional. Any submissions will be lost.</mu-alert
-        >
         <mu-card-text>
+          <mu-snackbar position="top" :open.sync="this.snackbar.open" :color="this.snackbar.error ? 'error':'success'">
+            {{this.snackbar.message}}
+            <span v-if="this.snackbar.messages.length != 0">
+              <span v-for="message in this.snackbar.messages" :key="message">
+                {{message}}<br />
+              </span>
+            </span>
+            <mu-button flat slot="action" @click="this.snackbar.open = false">Close</mu-button>
+          </mu-snackbar>
           <mu-form
             :model="form"
             ref="form"
@@ -122,11 +128,19 @@
 </template>
 
 <script>
+import API from '@/services/API';
+
 export default {
   components: {},
   created() {},
   data: function() {
     return {
+      snackbar: {
+        open: false,
+        message: '',
+        error: false,
+        messages: [],
+      },
       firstNameRules: [
         { validate: (val) => !!val, message: "First name must be provided" },
       ],
@@ -175,9 +189,44 @@ export default {
     };
   },
   methods: {
+    showSnackbar(message, error=false, messages=[]) {
+      this.snackbar.open = true;
+      this.snackbar.message = message;
+      this.snackbar.error = error;
+      this.snackbar.messages = messages;
+      setTimeout(() => {
+        this.snackbar.open = false;
+      }, 3000);
+    },
     submit() {
-      this.$refs.form.validate().then((result) => {
-        console.log("form valid: ", result);
+      this.$refs.form.validate().then(async (result) => {
+        if (result) {
+          try {
+            const res = await API.post("rsvp", JSON.stringify({
+              rsvpCode: this.form.rsvpCode,
+              firstName: this.form.first,
+              lastName: this.form.last,
+              smsReminder: this.form.reminders.includes("text"),
+              phone: this.form.phone,
+              emailReminder: this.form.reminders.includes("email"),
+              email: this.form.email,
+              address: this.form.address,
+              allergies: this.form.hasAllergies,
+              allergyDetails: this.form.allergies,
+              notes: this.form.notes,
+            }));
+            this.showSnackbar("Submission Saved");
+          } catch (err) {
+            console.error(err);
+            if (err.response.data.hasOwnProperty('error')) {
+              if (err.response.data.hasOwnProperty('messages')) {
+                this.showSnackbar(err.response.data.error + ": ", true, err.response.data.messages);
+              } else {
+                this.showSnackbar(err.response.data.error, true);
+              }
+            }
+          }
+        }
       });
     },
   },
