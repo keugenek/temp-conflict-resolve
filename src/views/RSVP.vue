@@ -16,15 +16,17 @@
           <mu-form
             :model="form"
             ref="form"
-            label-position="right"
+            :label-position="this.isMobile ? 'top':'right'"
             label-width="250"
           >
             <mu-form-item prop="first" label="First Name" :rules="firstNameRules">
               <mu-text-field v-model="form.first" prop="first"></mu-text-field>
             </mu-form-item>
+            <br />
             <mu-form-item prop="last" label="Last Name" :rules="lastNameRules">
               <mu-text-field v-model="form.last" prop="last"></mu-text-field>
             </mu-form-item>
+            <br />
             <mu-form-item
               prop="rsvpCode"
               label="RSVP Code from Envelope"
@@ -36,6 +38,7 @@
                 v-model="form.rsvpCode"
               ></mu-text-field>
             </mu-form-item>
+            <br />
             <mu-form-item
               prop="reminders"
               label="Reminder one month and one week before the wedding?"
@@ -55,20 +58,23 @@
               prop="email"
               label="Email Address"
               :rules="emailRules"
-              help-text="This is only used for the two reminders, nothing else."
+              help-text="This is only used for the two reminders."
               v-if="this.form.reminders.includes('email')"
             >
               <mu-text-field prop="email" v-model="form.email"></mu-text-field>
+              <br />
             </mu-form-item>
             <mu-form-item
               prop="phone"
               label="Phone Number"
               v-if="this.form.reminders.includes('text')"
               :rules="phoneRules"
-              help-text="This is only used for the two reminders, nothing else."
+              help-text="This is only used for the two reminders."
             >
               <mu-text-field prop="phone" v-model="form.phone"></mu-text-field>
+              <br />
             </mu-form-item>
+            <br />
             <mu-form-item
               prop="address"
               label="Return Address for Thank You Card"
@@ -83,6 +89,7 @@
                 prop="address"
               ></mu-text-field>
             </mu-form-item>
+            <br />
             <mu-form-item
               prop="hasAllergies"
               label="Do You Have Any Food Allergies?"
@@ -108,6 +115,7 @@
                 placeholder="Describe any food allergies and we will do our best to accommodate them."
               ></mu-text-field>
             </mu-form-item>
+            <br />
             <mu-form-item prop="notes" label="Any Notes for the Bride and Groom?">
               <mu-text-field
                 :rows="3"
@@ -186,9 +194,17 @@ export default {
         rsvpCode: "",
         notes: "",
       },
+      isMobile: false,
     };
   },
+  mounted() {
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+  },
   methods: {
+    onResize() {
+      this.isMobile = window.innerWidth < 600;
+    },
     showSnackbar(message, error=false, messages=[]) {
       this.snackbar.open = true;
       this.snackbar.message = message;
