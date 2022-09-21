@@ -1,12 +1,17 @@
 <template>
   <div class="footer">
-    <h4>Copyright &copy; 2022 - Jacob McSwain</h4>
+    <h4>Copyright &copy; 2018-{{year}} Jacob McSwain</h4>
   </div>
 </template>
 
 <script>
 export default {
   name: "SiteFooter",
+  data: function() {
+    return {
+      year: new Date().getFullYear(),
+    };
+  },
 };
 </script>
 
