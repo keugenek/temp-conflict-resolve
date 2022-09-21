@@ -1,8 +1,11 @@
 <template>
   <div class="header">
     <h2 style="height: 100%">
-      <router-link to="/" class="title"
+      <router-link v-if="this.weddingDate > this.time" to="/" class="title"
         >Katelyn Maes &hearts; Jacob McSwain</router-link
+      >
+      <router-link v-else to="/" class="title"
+        >Katelyn McSwain &hearts; Jacob McSwain</router-link
       >
     </h2>
     <span class="separator">|</span>
@@ -42,7 +45,14 @@ export default {
   data: function() {
     return {
       dropdownMenu: false,
+      weddingDate: Math.trunc(Date.parse('November 11, 2022 17:30:00 UTC')),
+      time: new Date().getTime(),
     };
+  },
+  created() {
+    setInterval(() => {
+      this.time = new Date().getTime();
+    }, 1000);
   },
   mounted() {
     this.updateDropdown();
@@ -126,7 +136,7 @@ export default {
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 420px) {
   .title {
     font-size: 0.6em;
   }
