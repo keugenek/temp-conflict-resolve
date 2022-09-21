@@ -26,11 +26,13 @@
       <mu-card>
         <mu-card-title title="Parking"></mu-card-title>
         <mu-card-text>
-          <img
-                style="width: 100%"
-                :src="require('@/assets/parking.png')"
-                alt="Park South of Crew Workspace. Avoid the lot directly East of the entrance."
-              />
+            <a :href="require('@/assets/parking.png')" target="_blank">
+              <img
+                  style="width: 100%"
+                  :src="require('@/assets/parking.png')"
+                  alt="Park South of Crew Workspace. Avoid the lot directly East of the entrance."
+                />
+            </a>
           <p>Park South of Crew Workspace. Avoid the lot directly East of the entrance.</p>
         </mu-card-text>
       </mu-card>
