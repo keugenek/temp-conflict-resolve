@@ -202,7 +202,7 @@ export default {
       this.$refs.form.validate().then(async (result) => {
         if (result) {
           try {
-            const res = await API.post("rsvp", JSON.stringify({
+            await API.post("rsvp", JSON.stringify({
               rsvpCode: this.form.rsvpCode,
               firstName: this.form.first,
               lastName: this.form.last,
@@ -218,8 +218,8 @@ export default {
             this.showSnackbar("Submission Saved");
           } catch (err) {
             console.error(err);
-            if (err.response.data.hasOwnProperty('error')) {
-              if (err.response.data.hasOwnProperty('messages')) {
+            if ('error' in err.response.data) {
+              if ('messages' in err.response.data) {
                 this.showSnackbar(err.response.data.error + ": ", true, err.response.data.messages);
               } else {
                 this.showSnackbar(err.response.data.error, true);
