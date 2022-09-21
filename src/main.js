@@ -27,7 +27,6 @@ Vue.use(TextField);
 new Vue({
   router,
   render: (h) => h(App),
-  propsData: { canvasElement: document.getElementById('constellations') },
 }).$mount('#app');
 
 Vue.filter('two_digits', (value) => {

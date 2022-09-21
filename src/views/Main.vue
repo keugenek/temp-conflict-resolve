@@ -7,9 +7,9 @@
           <h4>We will be getting married on the 11th of November, 2022</h4>
           <br />
           <Countdown
-            :date="Math.trunc(Date.parse('November 11, 2022 15:30:00 UTC') / 1000)"
+            :date="Math.trunc(Date.parse('November 11, 2022 17:30:00 UTC') / 1000)"
           >
-            <h2>Congratulations!</h2>
+            <h2 style="display: block; text-align: center">Congratulations!</h2>
           </Countdown>
         </mu-card-text>
       </mu-card>

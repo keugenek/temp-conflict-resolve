@@ -26,13 +26,13 @@
         </mu-list-item>
       </mu-list>
     </mu-menu>
-    <v-else>
+    <span v-else>
       <router-link class="nav" to="/rsvp">RSVP</router-link>
       <router-link class="nav" to="/location">Location</router-link>
       <router-link class="nav" to="/dresscode">Dress Code</router-link>
       <router-link class="nav" to="/coc">Code of Conduct</router-link>
       <router-link class="nav" to="/about">About Us</router-link>
-    </v-else>
+    </span>
   </div>
 </template>
 
