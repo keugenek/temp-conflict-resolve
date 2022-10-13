@@ -31,7 +31,7 @@
               prop="rsvpCode"
               label="RSVP Code from Envelope"
               :rules="rsvpRules"
-              help-text="Check for a white label on the inside flap"
+              help-text="Check for a white label on the back of the envelope"
             >
               <mu-text-field
                 prop="rsvpCode"
