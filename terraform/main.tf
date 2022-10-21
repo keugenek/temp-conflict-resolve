@@ -75,6 +75,16 @@ resource "aws_s3_object" "dist-js" {
   content_type = "text/javascript"
 }
 
+resource "aws_s3_object" "public-pdf" {
+  for_each = fileset("${path.module}/../public", "*.pdf")
+
+  bucket       = aws_s3_bucket.site-bucket.id
+  key          = each.value
+  source       = "${path.module}/../public/${each.value}"
+  etag         = filemd5("${path.module}/../public/${each.value}")
+  content_type = "application/pdf"
+}
+
 resource "aws_s3_object" "dist-png" {
   for_each = fileset("${path.module}/../dist", "*.png")
 
