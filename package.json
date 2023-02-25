@@ -37,7 +37,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-vue": "^9.9.0",
     "less": "^4.1.3",
-    "less-loader": "^11.0.0",
+    "less-loader": "^11.1.0",
     "muse-ui": "^3.0.2",
     "path-parser": "^6.1.0",
     "sitemap": "^7.1.1",
